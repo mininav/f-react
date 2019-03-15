@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ProductNode from "./ProductNode";
 
@@ -10,7 +10,7 @@ function ProductRoot(props) {
 
     const items = props.root.childNodes ? Object.keys(props.root.childNodes).map(key => {
         return (
-            <ProductNode key={key} node={props.root.childNodes[key]}/>
+            <ProductNode key={key} websocket={props.websocket} node={props.root.childNodes[key]}/>
         )
     }) : null;
 

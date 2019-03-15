@@ -16,7 +16,7 @@ function Logout(props) {
         return null;
     }
 
-    return <MenuItem title={"logout"} onclick={evt => {
+    return <MenuItem title={"Выйти"} onclick={evt => {
         props.websocket.send({
             logout: {}
         })

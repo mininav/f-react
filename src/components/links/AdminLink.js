@@ -7,7 +7,7 @@ const AdminLink = (props) => {
         return null;
     }
 
-    return <MenuItem title={"admin"} onclick={() => {
+    return <MenuItem title={"Администрирование"} onclick={() => {
         props.websocket.send({
             state: "admin"
         })

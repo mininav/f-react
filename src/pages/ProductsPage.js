@@ -4,34 +4,40 @@ import PropTypes from 'prop-types'
 import ProductRoot from "../components/ProductRoot";
 
 ProductsPage.propTypes = {
-    websocket: PropTypes.instanceOf(Websocket),
+    websocket: PropTypes.instanceOf(Websocket).isRequired,
     login: PropTypes.object
 
 };
 
-function ProductsPage(props) {
+function ProductsPage({websocket, login}) {
 
     const[root, setRoot] = useState({});
     useEffect(() => {
 
-        props.websocket.send({
-            getProductTree: {}
-        });
-
-        const prop = "productTree";
-        const id = props.websocket.addMsgEventListener(prop, root => {
+        const unsubscribe = websocket.addMsgEventListener("productTree", root => {
             setRoot(root);
         });
 
-        return () => {
-            props.websocket.removeMsgEventListener(prop, id);
-        }
+        websocket.send({
+            getProductTree: {}
+        });
+
+        return unsubscribe;
+    }, []);
+
+    const [products, setProducts] = useState({});
+    useEffect(() => {
+
+        return websocket.addMsgEventListener("products", products => {
+            setProducts(products);
+        });
+
     }, []);
 
     return(
         <div>
             <h1>Products 123</h1>
-            <ProductRoot root={root}/>
+            <ProductRoot root={root} websocket={websocket}/>
         </div>
     )
 }

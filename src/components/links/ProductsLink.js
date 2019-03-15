@@ -7,7 +7,7 @@ const ProductsLink = (props) => {
         return null;
     }
 
-    return <MenuItem title={"products"}
+    return <MenuItem title={"Продукты"}
                      onclick={() => {
                          props.websocket.send({
                              state: "products"

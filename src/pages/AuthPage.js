@@ -6,7 +6,7 @@ function AuthPage(props) {
     return (
         <div className={"page"}>
             <h1>AuthPage</h1>
-            <LoginForm ws={props.ws}/>
+            <LoginForm websocket={props.websocket}/>
         </div>
     )
 

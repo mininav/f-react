@@ -52,7 +52,12 @@ export default class Websocket {
             this.msgPropertyListenersMap[property] = [];
         }
 
-        return this.msgPropertyListenersMap[property].push(listener);
+        const id = this.msgPropertyListenersMap[property].push(listener);
+
+
+        return () => this.removeMsgEventListener(
+            property, id
+        );
 
 
     }

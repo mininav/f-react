@@ -2,27 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MenuItem from "../MenuItem";
 
-HomeLink.propTypes = {
-    login: PropTypes.object,
-    websocket: PropTypes.object
+MeasuresLink.propTypes = {
+    login: PropTypes.object
+
 };
 
 /**
  * @return {null}
  */
-function HomeLink(props) {
+function MeasuresLink(props) {
 
-    if(!props.login) {
+    if (!props.login) {
         return null;
     }
 
-    return <MenuItem title={"Домой"}
+    return <MenuItem title={"Единицы"}
                      onclick={() => {
                          props.websocket.send({
-                             state: "start"
+                             state: "measures"
                          })
-                  }}/>;
-
+                     }}/>;
 }
 
-export default HomeLink;
+export default MeasuresLink;

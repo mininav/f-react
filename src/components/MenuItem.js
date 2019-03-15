@@ -6,10 +6,10 @@ MenuItem.propTypes = {
     onclick: PropTypes.func
 };
 
-function MenuItem(props) {
+function MenuItem({title, onclick}) {
     return (
-        <button className={"menu-item"} onClick={props.onclick}>
-            {props.title}
+        <button className={"menu-item"} onClick={onclick}>
+            {title}
         </button>
     )
 }

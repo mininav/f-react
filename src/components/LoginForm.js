@@ -1,10 +1,16 @@
 import { useForm, useField } from 'react-final-form-hooks';
 import React from 'react';
+import PropTypes from 'prop-types';
+import Websocket from "../utils/Websocket";
 
-function LoginForm(props) {
+LoginForm.propTypes = {
+    websocket: PropTypes.instanceOf(Websocket).isRequired
+};
+
+function LoginForm({websocket}) {
 
     const onSubmit = values => {
-        props.ws.send({
+        websocket.send({
             login: {
                 name: values.name,
                 password: values.password
