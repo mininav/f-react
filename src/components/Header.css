@@ -1,0 +1,14 @@
+header {
+    display: flex;
+    justify-content: center;
+    flex-flow: revert;
+}
+
+.main-menu {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.WorkplaceInfo {
+}
+
