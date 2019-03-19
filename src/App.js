@@ -13,9 +13,8 @@ import WaitPage from "./pages/WaitPage";
 /**
  * @return {null}
  */
-function App() {
+function App({websocket}) {
 
-  const [websocket, setWebsocket] = useState(new Websocket("ws://f.fusion-mng.xyz/hws"));
   const [workplace, setWorkplace] = useState({});
   useEffect(() => {
     const unsubscribe = websocket.addMsgEventListener("workplace", workplace => {

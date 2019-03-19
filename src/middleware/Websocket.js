@@ -1,8 +1,9 @@
-export const API_URL = 'http://f.fusion-mng.xyz/hws';
+export const API_URL = 'ws://f.fusion-mng.xyz/hws';
 
 export default class Websocket {
 
-    constructor() {
+    constructor({url, store}) {
+        this.store = store;
         this.msgPropertyListenersMap = {};
         this.running = false;
     }
@@ -79,6 +80,20 @@ export default class Websocket {
         this.websocket.onmessage = evt => this._onmessage(evt);
 
         this.running = true;
+
+        this.addMsgEventListener('productTree', tree => {
+            this.store.dispatch({
+                type: 'PRODUCT_TREE',
+                tree: tree
+            })
+        });
+
+        this.addMsgEventListener('measures', measures => {
+            this.store.dispatch({
+                type: 'MEASURES',
+                measures: measures
+            })
+        })
 
     }
 

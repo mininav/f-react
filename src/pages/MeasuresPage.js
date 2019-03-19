@@ -1,48 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, {useEffect} from 'react';
+import {connect} from "react-redux";
+import MeasureList from "../components/MeasureList";
 import Websocket from "../middleware/Websocket";
+import PropTypes from 'prop-types';
 
-MeasuresPage.propTypes = {
+Meas.propTypes = {
     websocket: PropTypes.instanceOf(Websocket)
-
 };
 
-function MeasuresPage(props) {
+function Meas({websocket, measures}) {
 
-    const [measures, setMeasures] = useState({});
+    console.log(measures);
+
     useEffect(() => {
 
-        const remove = [];
+        console.log("mount");
 
-        remove.push(props.websocket.addMsgEventListener("measures", measures => {
-            setMeasures(measures);
-        }));
-
-        remove.push(props.websocket.addMsgEventListener("measureUpdates", updates => {
-            Object.keys(updates).forEach(key => {
-                if (updates[key].deleted) {
-                    delete measures[key];
-                } else {
-                    measures[key] = updates[key];
-                }
-            });
-            setMeasures(measures);
-        }));
-
-        props.websocket.send({
+        websocket.send({
             getMeasures: {}
         });
 
-        return () => {
-            remove.forEach(f=>f());
-        }
     }, []);
 
-    return (
-        <div>
+    if (measures) {
+        return (
+            <MeasureList measures={measures}/>
+        )
+    } else {
+        return <div>ml</div>
+    }
 
-        </div>
-    );
 }
 
-export default MeasuresPage;
+const mapStateToProps = state => {
+    return {
+        measures: state.measures
+    }
+}
+
+export default connect(mapStateToProps)(Meas);
