@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Workplaces from "../components/Workplaces";
 import PropTypes from 'prop-types';
-import Websocket from "../utils/Websocket";
+import Websocket from "../middleware/Websocket";
 import Users from "../components/Users";
 
 AdminPage.propTypes = {

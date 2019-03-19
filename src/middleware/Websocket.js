@@ -1,10 +1,10 @@
+export const API_URL = 'http://f.fusion-mng.xyz/hws';
+
 export default class Websocket {
 
-    constructor(wsAddress) {
-        this.wsAddress = wsAddress;
+    constructor() {
         this.msgPropertyListenersMap = {};
         this.running = false;
-
     }
 
     _onopen(event) {
@@ -72,8 +72,7 @@ export default class Websocket {
         this.onclose = onclose;
         this.onmessage = onmessage;
 
-        // this.socket = new WebSocket(`ws://${document.location.host}/hws`);
-        this.websocket = new WebSocket(this.wsAddress);
+        this.websocket = new WebSocket(API_URL);
 
         this.websocket.onopen = evt => this._onopen(evt);
         this.websocket.onclose = evt => this._onclose(evt);

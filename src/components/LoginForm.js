@@ -1,7 +1,7 @@
 import { useForm, useField } from 'react-final-form-hooks';
 import React from 'react';
 import PropTypes from 'prop-types';
-import Websocket from "../utils/Websocket";
+import Websocket from "../middleware/Websocket";
 
 LoginForm.propTypes = {
     websocket: PropTypes.instanceOf(Websocket).isRequired

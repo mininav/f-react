@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Websocket from "../utils/Websocket";
+import Websocket from "../middleware/Websocket";
 
 MeasuresPage.propTypes = {
     websocket: PropTypes.instanceOf(Websocket)

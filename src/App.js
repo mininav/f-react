@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import AdminPage from "./pages/AdminPage"
-import Websocket from "./utils/Websocket";
+import Websocket from "./middleware/Websocket";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import AuthPage from "./pages/AuthPage";

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Websocket from "../utils/Websocket";
+import Websocket from "../middleware/Websocket";
 import PropTypes from 'prop-types'
 import ProductRoot from "../components/ProductRoot";
 
